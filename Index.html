@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Ahmar Ansari - Project & Operations Delivery Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff0a" points="0,1000 1000,800 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            margin-top: -50px;
+            position: relative;
+            z-index: 2;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* Expertise Cards */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .expertise-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e6f0ff 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .expertise-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .expertise-card ul {
+            list-style: none;
+        }
+
+        .expertise-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .expertise-card li:last-child {
+            border-bottom: none;
+        }
+
+        .expertise-card strong {
+            color: #333;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .project-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-meta {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-description {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .achievements {
+            margin-bottom: 1rem;
+        }
+
+        .achievements h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+            color: #666;
+        }
+
+        .achievements li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: #f0f4ff;
+            color: #667eea;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #fff, #f0f4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #f8f9ff;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #667eea;
+        }
+
+        .contact-text {
+            text-align: left;
+        }
+
+        .contact-text strong {
+            display: block;
+            margin-bottom: 0.3rem;
+            color: #333;
+        }
+
+        .contact-text a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .expertise-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-item {
+                justify-content: center;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Mohammad Ahmar Ansari</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Mohammad Ahmar Ansari</h1>
+                <p class="subtitle">Project & Operations Delivery Manager | Cloud & Digital Transformation | GenAI Solution Architect</p>
+                <p class="description">
+                    Accomplished Project & Operations Delivery Manager with 12+ years of experience transforming complex ICT infrastructure and delivering cutting-edge digital solutions across EdTech, e-Governance, and enterprise environments.
+                </p>
+                <a href="#contact" class="cta-button">Let's Connect</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <section id="expertise" class="section">
+            <div class="container">
+                <h2 class="section-title">Core Expertise</h2>
+                <div class="expertise-grid">
+                    <div class="expertise-card fade-in">
+                        <h3>Project & Operations Excellence</h3>
+                        <ul>
+                            <li><strong>End-to-End Delivery:</strong> 200+ ICT deployment sites across 15+ cities</li>
+                            <li><strong>Budget & Risk Management:</strong> ₹12+ Cr projects delivered on time</li>
+                            <li><strong>Stakeholder Alignment:</strong> Government liaison expertise</li>
+                            <li><strong>Methodology Mastery:</strong> Agile, Hybrid, Waterfall</li>
+                        </ul>
+                    </div>
+                    <div class="expertise-card fade-in">
+                        <h3>Cloud & Digital Transformation</h3>
+                        <ul>
+                            <li><strong>Multi-Cloud Expertise:</strong> AWS, GCP, Azure</li>
+                            <li><strong>DevOps Integration:</strong> Jenkins, Docker, Terraform</li>
+                            <li><strong>Infrastructure Scaling:</strong> 99.95% uptime achievement</li>
+                            <li><strong>Security & Compliance:</strong> ITIL, e-Governance, PCI-DSS</li>
+                        </ul>
+                    </div>
+                    <div class="expertise-card fade-in">
+                        <h3>GenAI & Innovation</h3>
+                        <ul>
+                            <li><strong>AI Solution Architecture:</strong> RAG chatbots with LangChain</li>
+                            <li><strong>Microservices Design:</strong> FastAPI with MongoDB</li>
+                            <li><strong>Proof-of-Concept Development:</strong> Smart governance solutions</li>
+                            <li><strong>Scalable Deployment:</strong> AWS-hosted AI microservices</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <h2 class="section-title" style="color: white;">Key Achievements</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">₹12+</div>
+                        <div class="stat-label">Crores Delivered</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Sites Managed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.95%</div>
+                        <div class="stat-label">Uptime Achieved</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">🤖</div>
+                            <h3 class="project-title">AI-Powered RAG Chatbot</h3>
+                            <p class="project-meta">GenAI Solution Architect | 2024</p>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-description">
+                                Designed and deployed an intelligent Q&A chatbot leveraging LangChain and Gemini API for contextual learning in education sector.
+                            </p>
+                            <div class="achievements">
+                                <h4>Key Achievements:</h4>
+                                <ul>
+                                    <li>Built modular FastAPI microservices with MongoDB vector databases</li>
+                                    <li>Integrated semantic search capabilities for enhanced UX</li>
+                                    <li>Deployed on AWS for scalable architecture</li>
+                                    <li>Created interactive Streamlit demos for client presentations</li>
+                                </ul>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">LangChain</span>
+                                <span class="tech-tag">Gemini API</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Streamlit</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">🎓</div>
+                            <h3 class="project-title">Digital Evaluation System - MPSOS</h3>
+                            <p class="project-meta">Project Delivery Manager | 2023-2024</p>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-description">
+                                Led end-to-end delivery of secure evaluation platform for Madhya Pradesh State Open School, ensuring compliance with state education standards.
+                            </p>
+                            <div class="achievements">
+                                <h4>Key Achievements:</h4>
+                                <ul>
+                                    <li>Implemented Jenkins + Docker CI/CD pipeline on AWS</li>
+                                    <li>Integrated advanced audit logging and PDF encryption</li>
+                                    <li>Developed real-time Power BI dashboards</li>
+                                    <li>Achieved 100% UAT compliance</li>
+                                </ul>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Jenkins</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">Django</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">🏥</div>
+                            <h3 class="project-title">AIIMS Raipur - CBT Portal</h3>
+                            <p class="project-meta">Project Manager | 2022-2023</p>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-description">
+                                Delivered comprehensive recruitment portal for AIIMS Raipur, managing internal vacancies and conducting secure online computer-based examinations.
+                            </p>
+                            <div class="achievements">
+                                <h4>Key Achievements:</h4>
+                                <ul>
+                                    <li>Ensured high availability and data privacy compliance</li>
+                                    <li>Implemented secure user authentication</li>
+                                    <li>Delivered real-time result processing with 99.95% uptime</li>
+                                    <li>Managed cross-functional teams within scope and budget</li>
+                                </ul>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Secure CBT Platform</span>
+                                <span class="tech-tag">Government IT Compliance</span>
+                                <span class="tech-tag">Real-time Processing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">🏛️</div>
+                            <h3 class="project-title">Nationwide ICT Deployment</h3>
+                            <p class="project-meta">Infrastructure Manager | 2015-2016</p>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-description">
+                                Led deployment of 12,000+ ICT assets across 200+ CBT exam centers in 15+ cities for government digital assessment initiatives.
+                            </p>
+                            <div class="achievements">
+                                <h4>Key Achievements:</h4>
+                                <ul>
+                                    <li>Achieved 100% site readiness within SLA</li>
+                                    <li>Implemented centralized OSS for monitoring</li>
+                                    <li>Managed 30+ cross-functional teams</li>
+                                    <li>Delivered high-availability CBT infrastructure</li>
+                                </ul>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">OSS</span>
+                                <span class="tech-tag">Biometrics</span>
+                                <span class="tech-tag">CCTV</span>
+                                <span class="tech-tag">Network Infrastructure</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Let's Connect</h2>
+                <p>Ready to discuss your next digital transformation initiative or AI-powered solution?</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            <strong>Email</strong>
+                            <a href="mailto:ahmar24@gmail.com">ahmar24@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-text">
+                            <strong>Phone</strong>
+                            <a href="tel:+919009107086">+91 9009107086</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🔗</div>
+                        <div class="contact-text">
+                            <strong>LinkedIn</strong>
+                            <a href="https://www.linkedin.com/in/mohammad-ahmar-ansari-b469071a" target="_blank">Connect with me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Mohammad Ahmar Ansari. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
